@@ -1,6 +1,9 @@
-# The Music HQ App
+# The Calendar School App
 
-## https://themusichq.com
+## Change Log
+
+- Added eloquent strictness
+- Change from Music HQ to Calendar School
 
 ## Installing Filament
 

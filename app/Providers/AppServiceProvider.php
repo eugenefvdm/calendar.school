@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Filament\Support\Facades\FilamentView;
 use Filament\View\PanelsRenderHook;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
@@ -23,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // See https://laravel.com/docs/11.x/eloquent#configuring-eloquent-strictness
+        Model::preventLazyLoading();
+        Model::preventSilentlyDiscardingAttributes();
+
         // See https://laraveldaily.com/post/filament-sign-in-with-google-using-laravel-socialite
         URL::forceScheme('https');
 
