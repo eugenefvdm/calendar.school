@@ -217,3 +217,25 @@ This error happened on a production server working perfectly before.
 ```bash
 [2024-12-05 09:28:07] production.ERROR:  {"exception":"[object] (Laravel\\Socialite\\Two\\InvalidStateException(code: 0):  at /home/forge/example.com/vendor/laravel/socialite/src/Two/AbstractProvider.php:237)
 ```
+
+### oAuth error #3 after using ->stateless()
+
+```bash
+[2024-12-05 10:47:18] production.DEBUG: Socialite CALLBACK {"provider":"google"}
+[2024-12-05 10:47:19] production.ERROR: Client error: `POST https://www.googleapis.com/oauth2/v4/token` resulted in a `400 Bad Request` response:
+{
+  "error": "invalid_grant",
+  "error_description": "Bad Request"
+}
+ {"exception":"[object] (GuzzleHttp\\Exception\\ClientException(code: 400): Client error: `POST https://www.googleapis.com/oauth2/v4/token` resulted in a `400 Bad Request` response:
+{
+  \"error\": \"invalid_grant\",
+  \"error_description\": \"Bad Request\"
+}
+ at /home/forge/themusichq.com/vendor/guzzlehttp/guzzle/src/Exception/RequestException.php:111)
+```
+
+After a tough and arduous troubleshooting session, we find that the uninstalling the App on the
+phone solved the issue.
+We also moved from SQLite to MySQL, but I think the app had corrupt
+session data or something.
